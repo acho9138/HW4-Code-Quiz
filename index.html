@@ -7,11 +7,25 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <script src="index.js"></script>
+    <link rel="stylesheet" href="style.css">
     <title>The Code Quiz</title>
 </head>
 
 <body>
+    <div class="top">
+        <div><a href="highscores.html">View Highscores</a></div>
+        <div class="timekeeper">Time Remaining: <span id="timeLeft">0</span></div>
+    </div>
 
+    <div class="container">
+        <h1>Coding Quiz Challenge</h1>
+        <br>
+        <p>Try to answer the following code-related questions within the time limit.
+            You only get one chance at answering each question, so think carefully before choosing your final answer.</p>
+        <p><span id="warning">Warning</span>: Incorrect answers will penalise your score time by TEN seconds!</p>
+        <br>
+        <button type="button" class="btn btn-primary btn-lg">Start Quiz!</button>
+    </div>
 </body>
 
 </html>
