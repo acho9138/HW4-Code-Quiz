@@ -1,0 +1,40 @@
+/* Styling for all pages */
+.container {
+    width: 70%;
+    text-align: center;
+    padding-top: 70px;
+}
+
+.top {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 15px;
+}
+
+.left {
+    text-align: left;
+    width: 50%;
+}
+
+/* Index page styling */
+#warning {
+    font-weight: bolder;
+    font-size: 20px;
+    color: red;
+}
+
+/* Questions page styling */
+.options {
+    margin-top: 10px;
+    padding: 4px 10px;
+}
+
+/* Final Score page styling */
+.finalScore {
+    font-size: 25px;
+}
+
+.submitButton {
+    padding: 2px 10px;
+    margin-left: 5px;
+}
