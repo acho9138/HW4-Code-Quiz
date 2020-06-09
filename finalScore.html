@@ -16,15 +16,23 @@
         <div><a href="highscores.html">View Highscores</a></div>
         <div class="timekeeper">Time Remaining: <span id="timeLeft">0</span></div>
     </div>
-    
+
     <div class="container left">
         <h1>Quiz Completed!</h1>
         <br>
-        <p>Your final score is <span class="finalScore">0</span></p>
-        <br>
-        Enter Initials: <input type="text" id="userInitials">
-        <button type="button" class="btn btn-primary submitButton">Submit</button>
+        <p>Your final score is: <span class="finalScore">0</span></p>
+
+        <form class="form-inline">
+            <div class="form-group mb-2">
+                <label for="name">Enter Initials: </label>
+            </div>
+            <div class="form-group mx-sm-3 mb-2">
+                <input type="text" name="name" id="name" required>
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Submit</button>
+        </form>
     </div>
+
 
 </body>
 
