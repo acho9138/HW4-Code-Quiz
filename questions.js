@@ -1,8 +1,8 @@
 const timeLeft = document.querySelector('#timeLeft')
+let seconds = 75;
 
 // Start timer
 function startTimer() {
-    let seconds = 75;
     timeLeft.textContent = seconds
 
     interval = setInterval(function () {
@@ -10,9 +10,7 @@ function startTimer() {
         timeLeft.textContent = seconds
 
         if (seconds === 0) {
-            clearInterval(interval)
-        } if (userProgress === 5) {
-            clearInterval(interval)
+            stopQuiz();
         }
     }, 1000)
 }
@@ -55,9 +53,13 @@ optionsContainer.addEventListener("click", answerQuestion)
 
 function answerQuestion(event) {
     if (event.target.matches('button')) {
-        userProgress++;
-        renderQuestion()
-        renderOptions()
+        if (userProgress === 4) {
+            stopQuiz();
+        } else {
+            userProgress++;
+            renderQuestion();
+            renderOptions();
+        }
     }
 }
 
@@ -71,12 +73,18 @@ function renderOptions() {
 
     for (let i = 0; i < currentOptions.length; i++) {
         let newOption = document.createElement("BUTTON")
-        newOption.textContent = currentOptions[i]
-        newOption.classList.add("btn", "btn-primary", "options")
-        newLine = document.createElement("br")
-        optionsContainer.appendChild(newOption)
-        optionsContainer.appendChild(newLine)
+        newOption.textContent = currentOptions[i];
+        newOption.classList.add("btn", "btn-primary", "options");
+        newLine = document.createElement("br");
+        optionsContainer.appendChild(newOption);
+        optionsContainer.appendChild(newLine);
     }
+}
+
+function stopQuiz() {
+    clearInterval(interval);
+    sessionStorage.setItem("score", seconds)
+    document.location = "finalScore.html"
 }
 
 renderQuestion();
