@@ -1,19 +1,6 @@
 const timeLeft = document.querySelector('#timeLeft')
-let seconds = 75;
-
-// Start timer
-function startTimer() {
-    timeLeft.textContent = seconds
-
-    interval = setInterval(function () {
-        seconds--;
-        timeLeft.textContent = seconds
-
-        if (seconds === 0) {
-            stopQuiz();
-        }
-    }, 1000)
-}
+const question = document.querySelector(".question")
+const optionsContainer = document.querySelector(".optionsContainer")
 
 // Object with questions, options and answers
 let questionOptions = [
@@ -44,11 +31,25 @@ let questionOptions = [
     }
 ]
 
-const question = document.querySelector(".question")
-const optionsContainer = document.querySelector(".optionsContainer")
+let seconds = 75;
+
+// Start timer when page loads
+function startTimer() {
+    timeLeft.textContent = seconds
+
+    interval = setInterval(function () {
+        seconds--;
+        timeLeft.textContent = seconds
+
+        if (seconds === 0) {
+            stopQuiz();
+        }
+    }, 1000)
+}
+
 let userProgress = 0
 
-// Render questions
+// Goes to next question when an option button is clicked
 optionsContainer.addEventListener("click", answerQuestion)
 
 function answerQuestion(event) {
@@ -63,6 +64,7 @@ function answerQuestion(event) {
     }
 }
 
+// Render questions and options
 function renderQuestion() {
     question.textContent = questionOptions[userProgress].question;
 }
@@ -81,6 +83,7 @@ function renderOptions() {
     }
 }
 
+// Stop quiz when time runs out or all questions are answered
 function stopQuiz() {
     clearInterval(interval);
     sessionStorage.setItem("score", seconds)
