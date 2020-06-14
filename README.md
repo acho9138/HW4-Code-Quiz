@@ -2,9 +2,12 @@
 
 ## Description
 
-A short quiz to test basic Javascript knowledge. There are five questions with 75 seconds on the clock with the final score being the time remaining. However, if the wrong answer is selected, it will deduct TEN seconds.
+A short quiz to test basic Javascript knowledge. 
+There are five questions with 75 seconds on the clock and the final score is the time remaining.
+However, if the wrong answer is selected, TEN seconds will be deducted.
 
-You only get one chance to answer each question, so read carefully and click cautiously to select the correct answer. Keep a record of the scores with your initials to try beat your best.
+You only get one chance to answer each question, so read carefully and click cautiously to select the correct answer. 
+Keep a record of the scores with your initials to try beat your best.
 
 ## Test Yourself!
 
