@@ -49,21 +49,6 @@ function startTimer() {
 
 let userProgress = 0
 
-// Goes to next question when an option button is clicked
-optionsContainer.addEventListener("click", answerQuestion)
-
-function answerQuestion(event) {
-    if (event.target.matches('button')) {
-        if (userProgress === 4) {
-            stopQuiz();
-        } else {
-            userProgress++;
-            renderQuestion();
-            renderOptions();
-        }
-    }
-}
-
 // Render questions and options
 function renderQuestion() {
     question.textContent = questionOptions[userProgress].question;
@@ -83,6 +68,53 @@ function renderOptions() {
     }
 }
 
+// Goes to next question when an option button is clicked
+optionsContainer.addEventListener("click", answerQuestion)
+
+function answerQuestion(event) {
+    if (event.target.matches('button')) {
+        checkAnswer(event);
+        if (userProgress === 4) {
+            stopQuiz();
+        } else {
+            userProgress++;
+            renderQuestion();
+            renderOptions();
+        }
+    }
+}
+
+// Check whether user response is correct or wrong
+function checkAnswer(event) {
+    const result = document.querySelector('.result')
+    const correct = document.querySelector('.correct')
+    const incorrect = document.querySelector('.incorrect')
+
+    let currentQuestion = questionOptions[userProgress]
+    const userChoiceIndex = currentQuestion.options.indexOf(event.target.innerText)
+    const correctAnswerIndex = currentQuestion.answerIndex
+
+    // Display either "correct" or "incorrect" depending on the user's choice
+    result.style.display = "block"
+        if (userChoiceIndex === correctAnswerIndex) {
+            correct.style.display = "block"
+        } else {
+            seconds = seconds - 10
+            incorrect.style.display = "block"
+        }
+    
+    // Remove user result after one second
+    showDiv = setTimeout(() => {
+        result.style.display = "none"
+        if (userChoiceIndex === correctAnswerIndex) {
+            correct.style.display = "none"
+        } else {
+            seconds = seconds - 10
+            incorrect.style.display = "none"
+        }
+    }, 1000);
+}
+
 // Stop quiz when time runs out or all questions are answered
 function stopQuiz() {
     clearInterval(interval);
@@ -93,3 +125,4 @@ function stopQuiz() {
 renderQuestion();
 renderOptions();
 startTimer();
+
