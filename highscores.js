@@ -11,11 +11,12 @@ for (let i = 0; i < highscores.length; i++) {
     highscoreList.appendChild(highscoreElement)
 }
 
-// Start quiz again and clear highscore list
+// Start quiz again 
 function startAgain() {
     document.location = "index.html"
 }
 
+// Clear highscore list
 function clearScores(event) {
     event.preventDefault();
     highscoreList.innerHTML = '';
