@@ -90,6 +90,10 @@ function checkAnswer(event) {
     const correct = document.querySelector('.correct')
     const incorrect = document.querySelector('.incorrect')
 
+    // Hide existing answers
+    correct.style.display = "none"
+    incorrect.style.display = "none"
+    
     let currentQuestion = questionOptions[userProgress]
     const userChoiceIndex = currentQuestion.options.indexOf(event.target.innerText)
     const correctAnswerIndex = currentQuestion.answerIndex
@@ -112,20 +116,23 @@ function checkAnswer(event) {
             seconds = seconds - 10
             incorrect.style.display = "none"
         }
-    }, 1000);
+    }, 500);
 }
 
 // Stop quiz when time runs out or all questions are answered
 function stopQuiz() {
+    // Disable buttons when quiz is finished
+    for (const button of document.querySelectorAll(".options")) {
+        button.setAttribute('disabled', true)
+    }
     clearInterval(interval);
     if (seconds < 0) seconds = 0
     sessionStorage.setItem("score", seconds)
     setTimeout(() => {
         document.location = "finalScore.html"
-    }, 1000);
+    }, 500);
 }
 
 renderQuestion();
 renderOptions();
 startTimer();
-
