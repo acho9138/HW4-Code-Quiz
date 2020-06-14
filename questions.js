@@ -41,7 +41,7 @@ function startTimer() {
         seconds--;
         timeLeft.textContent = seconds
 
-        if (seconds === 0) {
+        if (seconds <= 0) {
             stopQuiz();
         }
     }, 1000)
@@ -96,13 +96,13 @@ function checkAnswer(event) {
 
     // Display either "correct" or "incorrect" depending on the user's choice
     result.style.display = "block"
-        if (userChoiceIndex === correctAnswerIndex) {
-            correct.style.display = "block"
-        } else {
-            seconds = seconds - 10
-            incorrect.style.display = "block"
-        }
-    
+    if (userChoiceIndex === correctAnswerIndex) {
+        correct.style.display = "block"
+    } else {
+        seconds = seconds - 10
+        incorrect.style.display = "block"
+    }
+
     // Remove user result after one second
     showDiv = setTimeout(() => {
         result.style.display = "none"
@@ -118,8 +118,11 @@ function checkAnswer(event) {
 // Stop quiz when time runs out or all questions are answered
 function stopQuiz() {
     clearInterval(interval);
+    if (seconds < 0) seconds = 0
     sessionStorage.setItem("score", seconds)
-    document.location = "finalScore.html"
+    setTimeout(() => {
+        document.location = "finalScore.html"
+    }, 1000);
 }
 
 renderQuestion();
