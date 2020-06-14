@@ -14,7 +14,7 @@ https://acho9138.github.io/HW4-Code-Quiz/
 
 Thank you to the following resources to help make this quiz possible:
 
-    - The Coding Bootcamp at University of Sydney
-    - MDN
-    - Stack Overflow
-    - w3schools.com
+- The Coding Bootcamp at University of Sydney
+- MDN
+- Stack Overflow
+- w3schools.com
